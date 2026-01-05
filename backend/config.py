@@ -8,6 +8,10 @@ load_dotenv()
 # OpenRouter API key
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
+# Host URL for CORS (e.g., "http://46.224.197.208" or "https://example.com")
+# If not set, only localhost origins are allowed
+HOST_URL = os.getenv("HOST_URL")
+
 # Council members - list of OpenRouter model identifiers
 COUNCIL_MODELS = [
     "openai/gpt-5.1",

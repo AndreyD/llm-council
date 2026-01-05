@@ -10,14 +10,25 @@ import json
 import asyncio
 
 from . import storage
+from .config import HOST_URL
 from .council import run_full_council, generate_conversation_title, stage1_collect_responses, stage2_collect_rankings, stage3_synthesize_final, calculate_aggregate_rankings
 
 app = FastAPI(title="LLM Council API")
 
-# Enable CORS for local development
+# Build CORS origins list
+cors_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+if HOST_URL:
+    cors_origins.append(HOST_URL)
+    # Also allow with port 5173 for dev mode
+    cors_origins.append(f"{HOST_URL}:5173")
+
+# Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
