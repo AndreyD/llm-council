@@ -14,15 +14,15 @@ HOST_URL = os.getenv("HOST_URL")
 
 # Council members - list of OpenRouter model identifiers
 # See available models at: https://openrouter.ai/models
+# Free models have ":free" suffix (lower quality but no cost)
 COUNCIL_MODELS = [
-    "openai/gpt-4o",
-    "google/gemini-2.0-flash-001",
-    "anthropic/claude-sonnet-4",
-    "x-ai/grok-3",
+    "google/gemma-3-4b-it:free",
+    "meta-llama/llama-3.2-3b-instruct:free",
+    "qwen/qwen3-4b:free",
 ]
 
 # Chairman model - synthesizes final response
-CHAIRMAN_MODEL = "google/gemini-2.0-flash-001"
+CHAIRMAN_MODEL = "google/gemma-3-4b-it:free"
 
 # OpenRouter API endpoint
 OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
