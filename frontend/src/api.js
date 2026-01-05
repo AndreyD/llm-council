@@ -2,13 +2,14 @@
  * API client for the LLM Council backend.
  */
 
-// Use environment variable VITE_API_URL, or auto-detect from current host
-// For production behind nginx proxy, set VITE_API_URL="" to use relative paths
+// Use environment variable VITE_API_URL, or auto-detect
+// On localhost: direct to port 8001
+// On remote: use relative paths (API proxied through nginx)
 const API_BASE = import.meta.env.VITE_API_URL !== undefined
   ? import.meta.env.VITE_API_URL
   : (window.location.hostname === 'localhost' 
       ? 'http://localhost:8001' 
-      : `http://${window.location.hostname}:8001`);
+      : '');
 
 export const api = {
   /**
